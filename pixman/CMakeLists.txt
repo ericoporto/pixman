@@ -105,17 +105,17 @@ ENDIF(UNIX)
 
 add_library (pixman-1_core OBJECT ${SOURCES} ${HEADERS})
 
-if(BUILD_SHARED)
+if(PIXMAN_BUILD_SHARED)
     add_library(pixman-1 SHARED $<TARGET_OBJECTS:pixman-1_core>)
     install(TARGETS pixman-1 EXPORT PixmanTargets RUNTIME DESTINATION bin ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
-endif()
+endif(PIXMAN_BUILD_SHARED)
 
-if(BUILD_STATIC)
+if(PIXMAN_BUILD_STATIC)
     add_library(pixman-1_static STATIC $<TARGET_OBJECTS:pixman-1_core>)
     if(NOT MSVC)
         set_target_properties(pixman-1_static PROPERTIES OUTPUT_NAME pixman-1)
     endif(NOT MSVC)
     install(TARGETS pixman-1_static EXPORT PixmanTargets RUNTIME DESTINATION bin ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
-endif(BUILD_STATIC)
+endif(PIXMAN_BUILD_STATIC)
 
 install(FILES pixman.h ${CMAKE_CURRENT_BINARY_DIR}/pixman-version.h DESTINATION include/pixman-1)

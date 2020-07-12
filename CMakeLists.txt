@@ -34,7 +34,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/arch_configure.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config_configure.cmake)
 
 include_directories(
-    ${CMAKE_BINARY_DIR}/pixman
+    ${CMAKE_CURRENT_BINARY_DIR}/pixman
     ${CMAKE_CURRENT_SOURCE_DIR}/pixman
 )
 
